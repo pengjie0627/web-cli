@@ -9,8 +9,6 @@ const download = async (repo, tag) => {
         api += `#${tag}`;
     }
     const dest = `${downloadDirectory}/${repo}`;
-    console.log('api======', api)
-    console.log('dest======', dest)
     await downloadGitRepo(api, dest);
     return dest;
 };

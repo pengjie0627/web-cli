@@ -48,13 +48,13 @@ module.exports = async (projectName) => {
         choices: tags // 选择的数据
     })
     // 5、下载模版 把模版放到一个临时目录里存好,以备后期使用
-    const result = await waitFnloading(download, 'downloading template')(repo, tag)
+    const result = await waitFnloading(download, 'downloaded template')(repo, tag)
     // 我拿到了下载目录 直接拷贝当前执行的目录下即可 ncp
 
     // 把template 下的文件 拷贝到执行命令的目录下
     // 4. 拷贝操作
     // 这个目录 项目名字是否已经存在 如果存在提示当前已经存在
-    // 如果有ask.js 文件 .template/xxx
+    // 如果模板项目中有ask.js 则依据ask.js文件提示，否则直接拷贝
     if (!fs.existsSync(path.join(result, 'ask.js'))) {
         await ncp(result, path.resolve(projectName))
     } else {

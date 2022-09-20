@@ -38,7 +38,8 @@ Reflect.ownKeys(mapActions).forEach((action) => {
         console.log(mapActions[action].description);
       } else {
         // 截取命令
-        // td-cli create xxx // [node,td-cli,create,xxx]
+        // zzhd-web-cli create xxx // [node,zzhd-web-cli,create,xxx]
+        // 加载create.js
         require(path.resolve(__dirname, action))(...process.argv.slice(3));
       }
     });
